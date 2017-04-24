@@ -1,0 +1,6 @@
+These are the Perl notes, they're also used for documentation.
+
+first things first, run this command to isntall the modules needed:
+perl -MCPAN -e'install "LWP::Simple"'
+perl -MCPAN -e'install "Net::SCP"'
+
