@@ -1,0 +1,4 @@
+Notes for the Go section of this project
+
+indicate the installation steps
+figure compile vs run
