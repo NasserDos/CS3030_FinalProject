@@ -16,7 +16,8 @@ sub copyFile{
     this subroutine also takes the parameters from the Getopts
 =cut
 
-(my $sec,my $min,my $hour,my $mday,my $mon,my $year,my $wday,my $yday,my $isdst) = localtime();
+(my $sec,my $min,my $hour,my $mday,
+    my $mon,my $year,my $wday,my $yday,my $isdst) = localtime();
 
 my $cust = shift @_;
 my $dataFile = shift @_;
