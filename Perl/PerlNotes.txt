@@ -4,6 +4,7 @@ first things first, run this command to isntall the modules needed:
 perl -MCPAN -e'install "LWP::Simple"' # found ou this is not required 
 perl -MCPAN -e'install "Net::SCP"' # same goes for this one
 
+
 a simple use of getopts should help us verify the options and the paramters
 we passed in in the call.
 

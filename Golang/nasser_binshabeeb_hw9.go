@@ -1,5 +1,4 @@
-
-
+//this runs the main function
 package main
 
 import (
@@ -10,18 +9,28 @@ import (
         "flag" //getopts
 	)
 
-    func copyFile(c string, f string){
+    //This function copies the file from icarus
+    //it takes two parameters 
+    // c=> customer folder
+    // f=> dataFile
+    //it also gets the time using the time module
+    //It then runs a command to scp using all the parameters
+    //If the scp fails, it shows an error message
+        func copyFile(c string, f string){
 
+        //get the time
+        //then setup the variables
 	    ourTime := time.Now().String()
-        var stamp  = ourTime[0:10]
-        var month = c+"/"+stamp[5:7]
+        var stamp  = ourTime[0:10] //use slicing
+        var month = c+"/"+stamp[5:7] //concatenation
         var dest = month+"/FRED.csv."+stamp
         var server = "nb19445@icarus.cs.weber.edu"
         var fileAt = ":/home/hvalle/submit/cs3030/files/"+f
         var target = server+fileAt
 
+        //double return and double assigne with double init
         output, err := exec.Command("scp",target,dest).CombinedOutput()
-        if err != nil {
+        if err != nil { //on scp failure
               fmt.Println("Failed to copy file")
               fmt.Println("File doesn't exist !")
               os.Exit(1)
@@ -32,6 +41,8 @@ import (
 
     }
 
+    //this method creates the file structure
+    //loops and builds the folders as it runs
     func prepStructure(){
 
         fmt.Printf("Checking folder structure\n")
@@ -39,6 +50,7 @@ import (
 
         os.Mkdir("fredData",os.ModePerm)
 
+        //forloop, the only loop
         for i:= 1; i< 13; i++ {
                 dig := fmt.Sprintf("%02d",i)
                 os.Mkdir("fredData/"+dig,os.ModePerm)
@@ -48,12 +60,14 @@ import (
     }
 
     func usage(){
-        fmt.Printf("usage : go run nasser_binshabeeb_hw8.go \n")
+        fmt.Printf("usage : ./nasser_binshabeeb_hw8 -c custFolder -f dataFile \n")
         fmt.Printf("options -c fredData -f FRED.csv \n")
         fmt.Printf("Both fields are required \n")
     }
 
-
+    //main function, this will run "because of the first line in the script"
+    //it uses getopts to determine if the options were passed in
+    //some pointer manipulation does the trick
 	func main(){
         //basically getopts
         Cust := flag.String("c","","Customer folder")
@@ -61,7 +75,7 @@ import (
         Help := flag.Bool("help",false,"Help")
         flag.Parse()
 
-
+        //on the fly, this could be done better
         if *Cust == "" || *Data == "" || *Help {
 
             usage()

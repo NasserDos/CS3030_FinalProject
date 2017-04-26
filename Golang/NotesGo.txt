@@ -4,4 +4,4 @@ indicate the installation steps
 figure compile vs run
 Compile so he doesn't have to use the go run command
 
-
+These are my notes, I've kept the rest in the code "Comments"
